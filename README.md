@@ -30,28 +30,28 @@ http://www.cafebonappetit.com/feeds/weekly/363
 
 
 ## Activities:
-main activity - display current day’s breakfast, lunch, dinner, grab-n-go
-one tab at top for each of the four cafes, with main display below
-below tabs, header:
-name of cafe
-hours for breakfast, lunch, dinner
-location of cafe
-titles of food only, clickable for details
-organized by meal type (breakfast/lunch/dinner)
-sub-organized by “favs” at top, others below
-maybe even weekly or daily?P2
-second activity - meal details page
-shows detailed description of menu item, including tags for food category
-third activity - preferences
-default cafe (RSS feed #)
-IF TIME - checkboxes to display (filter out unchecked, default all to checked):
-breakfast
-lunch
-dinner
-grab-n-go
-Show Only: healthy, vegan.. etc from the xml feed
-IF TIME - checkboxes for favorite lunch stations
-not necessary for breakfast and dinner
+   * main activity - display current day’s breakfast, lunch, dinner, grab-n-go
+   * one tab at top for each of the four cafes, with main display below
+   * below tabs, header:
+   * name of cafe
+   * hours for breakfast, lunch, dinner
+   * location of cafe
+   * titles of food only, clickable for details
+   * organized by meal type (breakfast/lunch/dinner)
+   * sub-organized by “favs” at top, others below
+   * maybe even weekly or daily?P2
+   * second activity - meal details page
+   * shows detailed description of menu item, including tags for food category
+   * third activity - preferences
+   * default cafe (RSS feed #)
+   * IF TIME - checkboxes to display (filter out unchecked, default all to checked):
+   * breakfast
+   * lunch
+   * dinner
+   * grab-n-go
+   * Show Only: healthy, vegan.. etc from the xml feed
+   * IF TIME - checkboxes for favorite lunch stations
+   * not necessary for breakfast and dinner
 
 That’s it for v0.1.
 
