@@ -8,25 +8,26 @@ AndroidYaFood
 Wireframe: https://docs.google.com/a/yahoo-inc.com/drawings/d/1Ngo00xOVo8LMgOWxx6VxRMxxEk02wusSx9PZENMIVAI/edit
 
 Feeds:
+
+URL's Café
+http://www.cafebonappetit.com/feeds/daily/684
+http://www.cafebonappetit.com/feeds/weekly/684
+
 Boardwalk Café
 http://www.cafebonappetit.com/feeds/daily/358
 http://www.cafebonappetit.com/feeds/weekly/358
 
-Smiley's Café
-http://www.cafebonappetit.com/feeds/daily/360
-http://www.cafebonappetit.com/feeds/weekly/360
+Building E
+http://www.cafebonappetit.com/feeds/daily/682
+http://www.cafebonappetit.com/feeds/weekly/682
 
-Surf's Café
-http://www.cafebonappetit.com/feeds/daily/361
-http://www.cafebonappetit.com/feeds/weekly/361
+Building F
+http://www.cafebonappetit.com/feeds/daily/683
+http://www.cafebonappetit.com/feeds/weekly/683
 
-URL's Café
-http://www.cafebonappetit.com/feeds/daily/362
-http://www.cafebonappetit.com/feeds/weekly/362
-
-Yodel's Café
-http://www.cafebonappetit.com/feeds/daily/363
-http://www.cafebonappetit.com/feeds/weekly/363
+Building G
+http://www.cafebonappetit.com/feeds/daily/674
+http://www.cafebonappetit.com/feeds/weekly/674
 
 
 ## Activities:
