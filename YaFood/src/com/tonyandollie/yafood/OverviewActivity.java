@@ -2,6 +2,9 @@ package com.tonyandollie.yafood;
 
 import java.util.Locale;
 
+import org.json.crockford.JSONObject;
+import org.json.crockford.XML;
+
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -10,11 +13,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ListView;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class OverviewActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -115,9 +122,9 @@ public class OverviewActivity extends FragmentActivity implements
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
-			Fragment fragment = new DummySectionFragment();
+			Fragment fragment = new CafeMenuFragment();
 			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+			args.putInt(CafeMenuFragment.ARG_SECTION_NUMBER, position + 1);
 			fragment.setArguments(args);
 			return fragment;
 		}
@@ -151,26 +158,74 @@ public class OverviewActivity extends FragmentActivity implements
 	 * A dummy fragment representing a section of the app, but that simply
 	 * displays dummy text.
 	 */
-	public static class DummySectionFragment extends Fragment {
+	public static class CafeMenuFragment extends Fragment {
 		/**
 		 * The fragment argument representing the section number for this
 		 * fragment.
 		 */
 		public static final String ARG_SECTION_NUMBER = "section_number";
 
-		public DummySectionFragment() {
+		public CafeMenuFragment() {
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_overview_dummy,
+			View rootView = inflater.inflate(R.layout.fragment_cafe,
 					container, false);
-			TextView dummyTextView = (TextView) rootView
-					.findViewById(R.id.section_label);
-			dummyTextView.setText(Integer.toString(getArguments().getInt(
-					ARG_SECTION_NUMBER)));
+			ListView listView = (ListView) rootView
+					.findViewById(R.id.lvMenuList);
+			loadMenu();
+			
 			return rootView;
+		}
+		
+		public void loadMenu () {
+			// asyn load the data from Google API
+			AsyncHttpClient client = new AsyncHttpClient();
+			
+			// Google Image Search
+			// @see : https://developers.google.com/image-search/v1/jsondevguide
+			// https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android
+			// TODO: Handle no data connection
+			// TODO: Handle timeout
+			// TOOD: Handle empty results
+			// TODO: use YQL?
+			final String url = "http://www.cafebonappetit.com/feeds/daily/684";
+			
+			Log.d("DEBUG", "URL " +   url);
+			client.get(url,
+					new AsyncHttpResponseHandler() {
+			    @Override
+			     public void onStart() {
+			         // Initiated the request
+					Log.d("DEBUG", "URL START " +   url);
+
+			     }
+
+			     @Override
+			     public void onSuccess(String response) {
+			         // Successfully got a response
+			    	 JSONObject json = XML.toJSONObject(response);
+						Log.d("DEBUG", "URL SUCCESS " +   url + json.toString());
+
+			     }
+			 
+			     @Override
+			     public void onFailure(Throwable e, String response) {
+			         // Response failed :(
+						Log.d("DEBUG", "URL FAIL " +   url + e.toString() + response);
+
+			     }
+
+			     @Override
+			     public void onFinish() {
+			         // Completed the request (either success or failure)
+						Log.d("DEBUG", "URL FINISH" +   url);
+
+			     }
+			}
+		);
 		}
 	}
 
