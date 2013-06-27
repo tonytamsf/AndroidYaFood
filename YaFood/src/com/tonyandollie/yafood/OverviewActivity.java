@@ -95,6 +95,7 @@ public class OverviewActivity extends FragmentActivity implements
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
 		mViewPager.setCurrentItem(tab.getPosition());
+		
 	}
 
 	@Override
@@ -105,6 +106,7 @@ public class OverviewActivity extends FragmentActivity implements
 	@Override
 	public void onTabReselected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
+		
 	}
 
 	/**
@@ -127,6 +129,7 @@ public class OverviewActivity extends FragmentActivity implements
 			args.putInt(CafeMenuFragment.ARG_SECTION_NUMBER, position + 1);
 			fragment.setArguments(args);
 			return fragment;
+			
 		}
 
 		@Override
@@ -175,23 +178,26 @@ public class OverviewActivity extends FragmentActivity implements
 					container, false);
 			ListView listView = (ListView) rootView
 					.findViewById(R.id.lvMenuList);
-			loadMenu();
-			
+
+			loadMenu(getArguments().getInt(ARG_SECTION_NUMBER));
+
 			return rootView;
 		}
 		
-		public void loadMenu () {
+		public void loadMenu (int menuNumber) {
 			// asyn load the data from Google API
 			AsyncHttpClient client = new AsyncHttpClient();
 			
-			// Google Image Search
-			// @see : https://developers.google.com/image-search/v1/jsondevguide
-			// https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android
-			// TODO: Handle no data connection
-			// TODO: Handle timeout
-			// TOOD: Handle empty results
-			// TODO: use YQL?
-			final String url = "http://www.cafebonappetit.com/feeds/daily/684";
+			// starts with 0, but menuNumber starts with 1
+		    int[] menuUrls = new int[] {
+		    		R.string.daily_menu_url1,
+		    		R.string.daily_menu_url2,
+		    		R.string.daily_menu_url3,		    		
+		    		R.string.daily_menu_url4,		    		
+		    		R.string.daily_menu_url5,		    		
+		    };
+
+			final String url = getResources().getString(menuUrls[menuNumber - 1]);
 			
 			Log.d("DEBUG", "URL " +   url);
 			client.get(url,

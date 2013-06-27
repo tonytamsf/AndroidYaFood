@@ -8,4 +8,8 @@
 	<string name="title_section4">Building F</string>
 	<string name="title_section5">Building G</string>
 	<string name="daily_menu_url1">http://www.cafebonappetit.com/feeds/daily/684</string>
+	<string name="daily_menu_url2">http://www.cafebonappetit.com/feeds/daily/358</string>
+	<string name="daily_menu_url3">http://www.cafebonappetit.com/feeds/daily/682</string>
+	<string name="daily_menu_url4">http://www.cafebonappetit.com/feeds/daily/683</string>
+	<string name="daily_menu_url5">http://www.cafebonappetit.com/feeds/daily/674</string>
 </resources>
