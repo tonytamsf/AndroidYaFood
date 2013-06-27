@@ -1,9 +1,12 @@
 package com.tonyandollie.yafood;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
+import org.json.crockford.JSONException;
 import org.json.crockford.JSONObject;
 import org.json.crockford.XML;
+import org.json.crockford.JSONArray;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -174,17 +177,18 @@ public class OverviewActivity extends FragmentActivity implements
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
+			
 			View rootView = inflater.inflate(R.layout.fragment_cafe,
 					container, false);
 			ListView listView = (ListView) rootView
 					.findViewById(R.id.lvMenuList);
-
-			loadMenu(getArguments().getInt(ARG_SECTION_NUMBER));
-
+			loadMenu(listView,
+					getArguments().getInt(ARG_SECTION_NUMBER));
+		
 			return rootView;
 		}
 		
-		public void loadMenu (int menuNumber) {
+		public void loadMenu (final View view, int menuNumber) {
 			// asyn load the data from Google API
 			AsyncHttpClient client = new AsyncHttpClient();
 			
@@ -197,10 +201,13 @@ public class OverviewActivity extends FragmentActivity implements
 		    		R.string.daily_menu_url5,		    		
 		    };
 
+		    final JSONObject stations = new JSONObject();
+		    final String xmlResult = new String();
 			final String url = getResources().getString(menuUrls[menuNumber - 1]);
 			
 			Log.d("DEBUG", "URL " +   url);
-			client.get(url,
+			client.get(
+					 url,
 					new AsyncHttpResponseHandler() {
 			    @Override
 			     public void onStart() {
@@ -212,8 +219,25 @@ public class OverviewActivity extends FragmentActivity implements
 			     @Override
 			     public void onSuccess(String response) {
 			         // Successfully got a response
+					 ArrayList<Station> stationResults = new ArrayList<Station>();
+
+					try {
+			    	 
 			    	 JSONObject json = XML.toJSONObject(response);
-						Log.d("DEBUG", "URL SUCCESS " +   url + json.toString());
+			    	 JSONArray jsonStations = json.getJSONObject("Document")
+			    			 .getJSONObject("tblMenu")
+			    			 .getJSONArray("tblDayPart");
+					 Log.d("DEBUG", "URL SUCCESS " +   url + json.toString());
+					 Log.d("DEBUG", "tblDayPart" + jsonStations.toString());
+
+			    	 ListView listView = (ListView ) view;
+			    	 StationListArrayAdapter stationAdapter = new StationListArrayAdapter(getActivity(),
+			    			 stationResults);
+			    	 stationAdapter.addAll(Station.fromJson(jsonStations));
+					 listView.setAdapter(stationAdapter);	
+					} catch (JSONException e) {
+						Log.d("DEBUG", e.toString());
+					}
 
 			     }
 			 
