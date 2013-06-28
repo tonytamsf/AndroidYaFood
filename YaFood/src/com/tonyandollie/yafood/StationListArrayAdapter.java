@@ -15,9 +15,9 @@ public class StationListArrayAdapter extends ArrayAdapter<Station> {
 	 * @param context
 	 * @param textViewResourceId
 	 */
+
 	public StationListArrayAdapter(Context context, List<Station> stations) {
 		super(context, R.layout.fragment_station, stations);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)

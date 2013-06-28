@@ -3,7 +3,6 @@ package com.tonyandollie.yafood;
 import java.util.ArrayList;
 
 import org.json.crockford.JSONArray;
-import org.json.crockford.JSONException;
 import org.json.crockford.JSONObject;
 
 public class Station extends BaseModel {

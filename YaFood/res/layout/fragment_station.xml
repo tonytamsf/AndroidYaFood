@@ -11,7 +11,7 @@
 		android:maxWidth="75dp"
 		android:text="vegetarian option"
 		android:textAppearance="?android:attr/textAppearanceSmall"
-		android:textSize="9dp" />
+		android:textSize="12sp" />
 	<FrameLayout
 		android:id="@+id/replaceWithMenuItem"
 		android:layout_width="wrap_content"
