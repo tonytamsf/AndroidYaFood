@@ -49,16 +49,12 @@ public class OverviewActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_overview);
 
-		// Set up the action bar.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 
-		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
@@ -207,55 +203,55 @@ public class OverviewActivity extends FragmentActivity implements
 			
 			Log.d("DEBUG", "URL " +   url);
 			client.get(
-					 url,
+					url,
 					new AsyncHttpResponseHandler() {
-			    @Override
-			     public void onStart() {
-			         // Initiated the request
-					Log.d("DEBUG", "URL START " +   url);
+						@Override
+						public void onStart() {
+							// Initiated the request
+							Log.d("DEBUG", "URL START " +   url);
 
-			     }
+						}
 
-			     @Override
-			     public void onSuccess(String response) {
-			         // Successfully got a response
-					 ArrayList<Station> stationResults = new ArrayList<Station>();
+						@Override
+						public void onSuccess(String response) {
+							// Successfully got a response
+							ArrayList<Station> stationResults = new ArrayList<Station>();
 
-					try {
-			    	 
-			    	 JSONObject json = XML.toJSONObject(response);
-			    	 JSONArray jsonStations = json.getJSONObject("Document")
-			    			 .getJSONObject("tblMenu")
-			    			 .getJSONArray("tblDayPart");
-					 Log.d("DEBUG", "URL SUCCESS " +   url + json.toString());
-					 Log.d("DEBUG", "tblDayPart" + jsonStations.toString());
+							try {
 
-			    	 ListView listView = (ListView ) view;
-			    	 StationListArrayAdapter stationAdapter = new StationListArrayAdapter(getActivity(),
-			    			 stationResults);
-			    	 stationAdapter.addAll(Station.fromJson(jsonStations));
-					 listView.setAdapter(stationAdapter);	
-					} catch (JSONException e) {
-						Log.d("DEBUG", e.toString());
+								JSONObject json = XML.toJSONObject(response);
+								JSONArray jsonStations = json.getJSONObject("Document")
+										.getJSONObject("tblMenu")
+										.getJSONArray("tblDayPart");
+								Log.d("DEBUG", "URL SUCCESS " +   url + json.toString());
+								Log.d("DEBUG", "tblDayPart" + jsonStations.toString());
+
+								ListView listView = (ListView ) view;
+								StationListArrayAdapter stationAdapter = new StationListArrayAdapter(getActivity(),
+										stationResults);
+								stationAdapter.addAll(Station.fromJson(jsonStations));
+								listView.setAdapter(stationAdapter);	
+							} catch (JSONException e) {
+								Log.d("DEBUG", e.toString());
+							}
+
+						}
+
+						@Override
+						public void onFailure(Throwable e, String response) {
+							// Response failed :(
+							Log.d("DEBUG", "URL FAIL " +   url + e.toString() + response);
+
+						}
+
+						@Override
+						public void onFinish() {
+							// Completed the request (either success or failure)
+							Log.d("DEBUG", "URL FINISH" +   url);
+
+						}
 					}
-
-			     }
-			 
-			     @Override
-			     public void onFailure(Throwable e, String response) {
-			         // Response failed :(
-						Log.d("DEBUG", "URL FAIL " +   url + e.toString() + response);
-
-			     }
-
-			     @Override
-			     public void onFinish() {
-			         // Completed the request (either success or failure)
-						Log.d("DEBUG", "URL FINISH" +   url);
-
-			     }
-			}
-		);
+					);
 		}
 	}
 

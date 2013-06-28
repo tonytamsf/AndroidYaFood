@@ -3,10 +3,10 @@ package com.tonyandollie.yafood;
 import org.json.crockford.JSONException;
 import org.json.crockford.JSONObject;
 
-import java.lang.reflect.Type;
+// import java.lang.reflect.Type;
 
-public class BaseModel<T> {
-    private Type t;
+public class BaseModel {
+//    private Type t;
     protected JSONObject jsonObject;
 
     public String getJSONString() {
