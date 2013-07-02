@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import org.json.crockford.JSONArray;
 import org.json.crockford.JSONObject;
 
+import android.util.Log;
+
 public class Station extends BaseModel {
 	
     public static Station fromJson(JSONObject jsonObject) {
         Station station = new Station();
         station.jsonObject = jsonObject;
-
+        Log.d("DEBUG", jsonObject.toString());
         return station;
     }
     

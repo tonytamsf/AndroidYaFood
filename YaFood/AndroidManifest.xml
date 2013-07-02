@@ -20,5 +20,9 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+		<activity
+			android:name="com.tonyandollie.yafood.PreferencesActivity"
+			android:label="@string/title_activity_preferences" >
+		</activity>
 	</application>
 </manifest>

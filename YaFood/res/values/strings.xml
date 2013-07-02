@@ -13,4 +13,20 @@
 	<string name="daily_menu_url4">http://www.cafebonappetit.com/feeds/daily/683</string>
 	<string name="daily_menu_url5">http://www.cafebonappetit.com/feeds/daily/674</string>
 	<string name="dayPartName">Day Part Name</string>
+	<string name="title_activity_preferences">Preferences</string>
+	<string name="hello_world">Hello world!</string>
+	<string-array name="cafeNames">
+		<item>URL\'s</item>
+		<item>Broadwalk</item>
+		<item>Building E</item>
+		<item>Building F</item>
+		<item>Building G</item>
+	</string-array>
+	<string-array name="cafeNumber">
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+		<item>4</item>
+		<item>5</item>
+	</string-array>
 </resources>
