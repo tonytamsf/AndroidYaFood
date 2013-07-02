@@ -201,7 +201,7 @@ public class OverviewActivity extends FragmentActivity implements
 //		    final String xmlResult = new String();
 			final String url = getResources().getString(menuUrls[menuNumber - 1]);
 			
-			Log.d("DEBUG", "URL " +   url);
+//			Log.d("DEBUG", "URL " +   url);
 			client.get(
 					url,
 					new AsyncHttpResponseHandler() {
@@ -219,12 +219,14 @@ public class OverviewActivity extends FragmentActivity implements
 
 							try {
 
+								dayPartResults.clear();
+								
 								JSONObject json = XML.toJSONObject(response);
 								JSONArray jsonDayParts = json.getJSONObject("Document")
 										.getJSONObject("tblMenu")
 										.getJSONArray("tblDayPart");
 //								Log.d("DEBUG", "URL SUCCESS " +   url + json.toString());
-								Log.d("DEBUG", "tblDayPart" + jsonDayParts.toString());
+//								Log.d("DEBUG", "tblDayPart" + jsonDayParts.toString());
 
 								dayPartResults = DayPart.fromJson(jsonDayParts);
 																
