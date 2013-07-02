@@ -2,22 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent" >
+
 	<TextView
-		android:id="@+id/tvStation"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentLeft="true"
-		android:layout_alignParentTop="true"
-		android:maxWidth="75dp"
-		android:text="vegetarian option"
-		android:textAppearance="?android:attr/textAppearanceSmall"
-		android:textSize="12sp" />
-	<FrameLayout
-		android:id="@+id/replaceWithMenuItem"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentRight="true"
-		android:layout_alignParentTop="true"
-		android:layout_toRightOf="@+id/tvStation" >
-	</FrameLayout>
+	    android:id="@+id/tvStation"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentTop="true"
+	    android:maxWidth="75dp"
+	    android:text="@string/stationName"
+	    android:textAppearance="?android:attr/textAppearanceSmall"
+	    android:textSize="12sp" />
+
+	<ListView
+	    android:id="@+id/lvItems"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/tvStation" >
+	</ListView>
+
 </RelativeLayout>

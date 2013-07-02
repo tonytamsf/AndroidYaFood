@@ -7,13 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
-public class StationListArrayAdapter extends ArrayAdapter<Station> {
+public class ItemListArrayAdapter extends ArrayAdapter<Item> {
 
-	public StationListArrayAdapter(Context context, ArrayList<Station> stations) {
-		super(context, R.layout.fragment_station, stations);
+	public ItemListArrayAdapter(Context context, ArrayList<Item> items) {
+		super(context, R.layout.fragment_item, items);
 	}
 
 	/* (non-Javadoc)
@@ -25,7 +24,7 @@ public class StationListArrayAdapter extends ArrayAdapter<Station> {
 		if (convertView == null ) {
 			LayoutInflater inflater  = LayoutInflater.from(getContext());
 			view = (View) inflater.inflate(
-					R.layout.fragment_station,
+					R.layout.fragment_item,
 					parent,
 					false
 					);
@@ -33,16 +32,19 @@ public class StationListArrayAdapter extends ArrayAdapter<Station> {
 			view = (View) convertView;
 		}
 		
-		Station s = getItem(position);
+		Item i = getItem(position);
 
-		TextView name = (TextView) view.findViewById(R.id.tvStation);
-		name.setText(s.getName());
+		TextView name = (TextView) view.findViewById(R.id.itemTitle);
+		name.setText(i.getTitle());
 		
-		ArrayList<Item> items = s.getItems();
-		ItemListArrayAdapter itemsAdapter = new ItemListArrayAdapter(getContext(), items);
+		TextView desc = (TextView) view.findViewById(R.id.itemDesc);
+		desc.setText(i.getDesc());
 		
-		ListView lvItems = (ListView) view.findViewById(R.id.lvItems);
-		lvItems.setAdapter(itemsAdapter);
+//		ArrayList<Item> items = s.getItems();
+//		ItemListArrayAdapter itemsAdapter = new ItemListArrayAdapter(getContext(), items);
+//		
+//		ListView lvItems = (ListView) view.findViewById(R.id.lvItems);
+//		lvItems.setAdapter(itemsAdapter);
 
 		return view;
 	}
