@@ -9,10 +9,21 @@ import android.util.Log;
 
 public class Station extends BaseModel {
 	
+	private String stationName;
+	private ArrayList<Item> items;
+
+	
     public static Station fromJson(JSONObject jsonObject) {
         Station station = new Station();
         station.jsonObject = jsonObject;
         Log.d("DEBUG", jsonObject.toString());
+
+        station.stationName = jsonObject.getString("txtStationDescription");
+
+    	JSONArray itemArray = new JSONArray("[\"tblItem\"]");
+		JSONArray itemsArray = jsonObject.toJSONArray(itemArray);
+    	station.items = Item.fromJson(itemsArray);
+
         return station;
     }
     
@@ -36,4 +47,13 @@ public class Station extends BaseModel {
 
         return stations;
     }    
+
+    public String getName() {
+    	return this.stationName;
+    }
+    
+    public ArrayList<Item> getItems() {
+    	return this.items;
+    }
+    
 }

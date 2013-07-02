@@ -30,4 +30,7 @@
 		<item>5</item>
 	</string-array>
 	<string name="title_activity_preference">PreferenceActivity</string>
+	<string name="stationName">Station Name</string>
+	<string name="itemTitle">Item Title</string>
+	<string name="itemDesc">Item description goes here</string>
 </resources>
