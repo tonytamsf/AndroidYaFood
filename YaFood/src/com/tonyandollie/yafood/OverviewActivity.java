@@ -220,18 +220,13 @@ public class OverviewActivity extends FragmentActivity implements
 								dayPartResults.clear();
 								
 								JSONObject json = XML.toJSONObject(response);
-						    	
-								JSONArray names = new JSONArray("[\"tblDayPart\"]");
-								JSONArray rawDayPartsArray = json.toJSONArray(names);
-//								JSONArray jsonDayParts = DayPart.fromJson(rawDayPartsArray);
-//
-//						    	 = json.getJSONObject("Document")
-//										.getJSONObject("tblMenu")
-//										.getJSONArray("tblDayPart");
+								JSONArray jsonDayParts = json.getJSONObject("Document")
+										.getJSONObject("tblMenu")
+										.getJSONArray("tblDayPart");
 //								Log.d("DEBUG", "URL SUCCESS " +   url + json.toString());
 //								Log.d("DEBUG", "tblDayPart" + jsonDayParts.toString());
 
-								dayPartResults = DayPart.fromJson(rawDayPartsArray);
+								dayPartResults = DayPart.fromJson(jsonDayParts);
 																
 								DayPartArrayAdpater dayPartAdapter = new DayPartArrayAdpater(getActivity(),
 										dayPartResults);
