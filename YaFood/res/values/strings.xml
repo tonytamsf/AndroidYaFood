@@ -13,4 +13,7 @@
 	<string name="daily_menu_url4">http://www.cafebonappetit.com/feeds/daily/683</string>
 	<string name="daily_menu_url5">http://www.cafebonappetit.com/feeds/daily/674</string>
 	<string name="dayPartName">Day Part Name</string>
+	<string name="stationName">Station Name</string>
+	<string name="itemTitle">Item Title</string>
+	<string name="itemDesc">Item description goes here</string>
 </resources>
