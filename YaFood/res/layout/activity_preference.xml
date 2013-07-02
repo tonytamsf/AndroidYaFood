@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:paddingBottom="@dimen/activity_vertical_margin"
+	android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_vertical_margin"
+	tools:context=".PreferenceActivity" >
+	<TextView
+		android:id="@+id/tvDefaultCafe"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:layout_marginTop="17dp"
+		android:text="Default Cafe"
+		android:textAppearance="?android:attr/textAppearanceSmall" />
+	<Spinner
+		android:id="@+id/spDefaultCafe"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/tvDefaultCafe"
+		android:layout_toRightOf="@+id/tvDefaultCafe"
+		android:entries="@array/cafeNames" />
+	<TextView
+		android:id="@+id/tvCategories"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/tvDefaultCafe"
+		android:layout_below="@+id/spDefaultCafe"
+		android:text="Type of Food"
+		android:textAppearance="?android:attr/textAppearanceSmall" />
+	<CheckBox
+		android:id="@+id/cb_vegetarian"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/tvCategories"
+		android:text="vegetarian" />
+	<CheckBox
+		android:id="@+id/cb_vegan"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/cb_vegetarian"
+		android:text="vegan" />
+	<CheckBox
+		android:id="@+id/cb_farm_to_fork"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/cb_vegan"
+		android:text="farm to fork" />
+	<CheckBox
+		android:id="@+id/cb_made_without_gluten"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/cb_farm_to_fork"
+		android:text="made without gluten" />
+</RelativeLayout>

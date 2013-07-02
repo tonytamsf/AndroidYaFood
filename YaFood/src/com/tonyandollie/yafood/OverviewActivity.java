@@ -97,7 +97,7 @@ public class OverviewActivity extends FragmentActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Preferences activity
 		Intent i = new Intent(getApplicationContext(),
-	  			PreferencesActivity.class	
+	  			PreferenceActivity.class	
 		);
 
 		startActivity(i);

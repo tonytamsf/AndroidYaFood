@@ -24,5 +24,9 @@
 			android:name="com.tonyandollie.yafood.PreferencesActivity"
 			android:label="@string/title_activity_preferences" >
 		</activity>
+		<activity
+			android:name="com.tonyandollie.yafood.PreferenceActivity"
+			android:label="@string/title_activity_preference" >
+		</activity>
 	</application>
 </manifest>
