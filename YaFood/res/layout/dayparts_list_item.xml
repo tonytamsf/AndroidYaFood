@@ -9,14 +9,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/dayPartName" />
+        android:text="@string/dayPartName"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-	<FrameLayout
-		android:id="@+id/replaceWithStationsFragment"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentLeft="true"
-		android:layout_below="@+id/dayPartName" >
-	</FrameLayout>
+    <ListView
+        android:id="@+id/stationsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/dayPartName"
+        android:textSize="12sp" >
+    </ListView>
 
 </RelativeLayout>
