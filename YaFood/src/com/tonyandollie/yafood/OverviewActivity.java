@@ -197,8 +197,6 @@ public class OverviewActivity extends FragmentActivity implements
 		    		R.string.daily_menu_url5,		    		
 		    };
 
-//		    final JSONObject stations = new JSONObject();
-//		    final String xmlResult = new String();
 			final String url = getResources().getString(menuUrls[menuNumber - 1]);
 			
 //			Log.d("DEBUG", "URL " +   url);
@@ -232,8 +230,6 @@ public class OverviewActivity extends FragmentActivity implements
 																
 								DayPartArrayAdpater dayPartAdapter = new DayPartArrayAdpater(getActivity(),
 										dayPartResults);
-								
-//								dayPartAdapter.addAll(DayPart.fromJson(jsonDayParts));
 							
 								ListView listView = (ListView) view;
 								listView.setAdapter(dayPartAdapter);	
