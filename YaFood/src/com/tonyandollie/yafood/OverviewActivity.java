@@ -31,6 +31,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 public class OverviewActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 
+	static final int PREFERENCE_SAVED = 100;
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -100,8 +101,14 @@ public class OverviewActivity extends FragmentActivity implements
 	  			PreferenceActivity.class	
 		);
 
-		startActivity(i);
+		startActivityForResult(i, PREFERENCE_SAVED);
 		return true;
+	}
+
+
+	@Override
+	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+		mSectionsPagerAdapter.reload();
 	}
 
 	@Override
@@ -129,6 +136,8 @@ public class OverviewActivity extends FragmentActivity implements
 	 * one of the sections/tabs/pages.
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+		private CafeMenuFragment _fragment;
+		
 
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
@@ -143,6 +152,7 @@ public class OverviewActivity extends FragmentActivity implements
 			Bundle args = new Bundle();
 			args.putInt(CafeMenuFragment.ARG_SECTION_NUMBER, position + 1);
 			fragment.setArguments(args);
+			_fragment = (CafeMenuFragment) fragment;
 			return fragment;
 			
 		}
@@ -153,6 +163,9 @@ public class OverviewActivity extends FragmentActivity implements
 			return 5;
 		}
 
+		public void reload() {
+			_fragment.reload();
+		}
 		@Override
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
@@ -177,6 +190,8 @@ public class OverviewActivity extends FragmentActivity implements
 	 * displays dummy text.
 	 */
 	public static class CafeMenuFragment extends Fragment {
+		private int currentMenuNumber = 1;
+		private ListView _listView;
 		/**
 		 * The fragment argument representing the section number for this
 		 * fragment.
@@ -186,6 +201,10 @@ public class OverviewActivity extends FragmentActivity implements
 		public CafeMenuFragment() {
 		}
 
+		public void reload() {
+			loadMenu(_listView, currentMenuNumber);
+		}
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
@@ -196,7 +215,8 @@ public class OverviewActivity extends FragmentActivity implements
 					.findViewById(R.id.lvMenuList);
 			loadMenu(listView,
 					getArguments().getInt(ARG_SECTION_NUMBER));
-		
+			this._listView = listView;
+			this.currentMenuNumber = getArguments().getInt(ARG_SECTION_NUMBER);
 			return rootView;
 		}
 		

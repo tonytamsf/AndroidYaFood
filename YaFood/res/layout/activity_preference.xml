@@ -55,4 +55,14 @@
 		android:layout_height="wrap_content"
 		android:layout_below="@+id/cb_farm_to_fork"
 		android:text="made without gluten" />
+	<Button
+		android:id="@+id/button1"
+		style="?android:attr/buttonStyleSmall"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		android:layout_marginBottom="68dp"
+		android:onClick="onSavePreference"
+		android:text="Save" />
 </RelativeLayout>
